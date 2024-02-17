@@ -1,5 +1,5 @@
 import './App.css'
-import Navbar from './components/Navbar'
+import Header from "./components/Header";
 import HomePage from './pages/HomePage'
 import {Route, Routes} from 'react-router-dom'
 
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Header />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
