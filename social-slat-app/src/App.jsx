@@ -1,12 +1,19 @@
-import { useState } from 'react'
 import './App.css'
+import Navbar from './components/Navbar'
+import HomePage from './pages/HomePage'
+import {Route, Routes} from 'react-router-dom'
 
 function App() {
 
 
   return (
     <>
-      <h1>Hi Paka</h1>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+      
     </>
   )
 }
