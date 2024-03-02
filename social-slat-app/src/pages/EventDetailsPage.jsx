@@ -1,11 +1,12 @@
-import HeroEvent from "../components/HeroEvent";
+import EventMainInfo from "../components/EventMainInfo";
+
 
 
 function EventDetails() {
    
     return (
         <>
-        <HeroEvent />
+        <EventMainInfo />
         </>
     );
 }
