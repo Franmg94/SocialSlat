@@ -8,7 +8,7 @@ function HomePage() {
     return(
         <> 
             <Hero />
-            <h1 className="title-font sm:text-4xl text-3xl mb-4 fonr-medium text-gray-900">Events happening</h1>
+            <h1 className="title-font sm:text-4xl text-3xl mb-4 fonr-medium text-gray-900">Events happening next</h1>
             <EventsSection />        
         </>
     );
