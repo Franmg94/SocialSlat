@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const API_URL = "http://localhost:5000";
@@ -23,9 +23,10 @@ function EventsSection() {
   }, []);
 
   return (
-    <section className="text-gray-600 body-font overflow-hidden">
-      <div className="container px-5 py-24 mx-auto">
+    <section className="text-gray-600 body-font overflow-hidden my-24 border border-solid border-red outline-current:black">
+      <div className="container relative  px-5 py-24 mt-10 mx-auto">
         {/*  */}
+        <h1 className="title-font sm:text-4xl text-3xl mb-4 fonr-medium text-gray-900">Events happening next</h1>
 
         {events.map((event) => {
           return (
