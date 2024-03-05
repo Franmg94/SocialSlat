@@ -12,6 +12,7 @@ export default function EventMainInfo() {
     axios
       .get(`${API_URL}/events/${eventId}`)
       .then((response) => {
+        console.log('Event fetched');
         console.log(response.data);
         setEventDetails(response.data);
       })
@@ -54,11 +55,12 @@ export default function EventMainInfo() {
             </p>
             <p>
               Participants:{" "}
-              {eventDetails.participants.map((participant) => (
+              {!eventDetails.participants ? <p>Loading...</p> : (eventDetails.participants.map((participant) => (
                 <span key={participant} className="font-light">
                   {participant}{" "}
                 </span>
-              ))}
+              )))}
+              
             </p>
           </div>
         </div>
