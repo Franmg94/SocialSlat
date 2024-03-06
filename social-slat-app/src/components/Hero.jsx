@@ -1,24 +1,36 @@
-import HeroVideo from '../assets/video/hero-video.mp4'
+import HeroVideo from "../assets/video/hero-video.mp4";
 
-function Hero(){
-    return(
-        <section className="text-gray-600 body-font my-10 border border-solid border-black outline-current:black">
-            <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+function Hero() {
+  return (
+    <section className=" text-white">
+      <div className="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center ">
+          <div className="mx-auto max-w-3xl text-center">
+            
+            {/* TEXT */}
+            <h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl drop-shadow-sm -mt-40">
+              Make your
+              <span className="sm:block"> Social Slat. </span>
+            </h1>
+            <p className="mx-auto mt-4 max-w-xl sm:text-xl/relaxed drop-shadow-lg">
+              Find the event that you need happening around you
+            </p>
 
-                {/* VIDEO */}
-                <div className="absolute  w-full h-full bg-white/10">
-                <video src={HeroVideo} type="video/mp4" autoPlay loop muted className="absolute w-full h-full object-cover -z-10 border border-solid border-black outline-current:black" >
-                </video>
-                </div>
-
-                <div className="text-center lg:w-2/3 w-full">
-                    <h1 className="title-font sm:text-4xl text-3xl mb-4 fonr-medium text-gray-900">Get Social and Slut</h1>
-                    <p className="mb-8 leading-relaxed">Find the event that you need happening around you</p>
-                    
-                </div>
+            {/* VIDEO */}
+            <div className="absolute inset-0 w-full h-full bg-white/10">
+              <video
+                src={HeroVideo}
+                type="video/mp4"
+                autoPlay
+                loop
+                muted
+                className="absolute w-full h-full object-cover -z-10 mt-10"
+              ></video>
             </div>
-        </section>
-    );
+
+          </div>
+      </div>
+    </section>
+  );
 }
 
 export default Hero;
