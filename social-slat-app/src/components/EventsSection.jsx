@@ -1,13 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SortButton from "./SortButton";
+
 
 
 const API_URL = "http://localhost:5000";
 
 function EventsSection() {
   const [events, setEvents] = useState([]);
+  const [sortBy, setSortBy] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
 
+   {/* REQUEST API */}
   const getAllEvents = () => {
     axios
       .get(`${API_URL}/events`)
@@ -18,23 +23,88 @@ function EventsSection() {
       .catch((error) => console.log(error));
   };
 
+   {/* SORT BY DATE  */}
+  //  const sortByDate = () => {
+  //   const toSortByDate = [...events];
+  //   const sortedByDate = toSortByDate.sort((a, b) => {
+  //     return new Date(a.date) - new Date(b.date);
+  //   });
+  //   setEvents(sortedByDate);
+  //  };
+
+   {/* SORT BY NAME  */}
+  //  const sortByName = () => {
+  //   let orderToggle = true;
+  //   const toSortyByName = [...events];
+  //   const sortedByName = toSortyByName.sort((a, b) => {
+  //     return a.category.toLowerCase().localeCompare(b.category.toLowerCase());
+  //   });
+  //   setEvents(sortedByName);
+  // };
+
+  const toggelSortOrder = () => {
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+  }
+
+  const sortByDate = () => {
+    toggelSortOrder();
+    setSortBy("date");
+    const sortedByDate = [...events].sort((a, b) => {
+      return sortOrder === "asc" ? new Date(a.date) - new Date(b.date) : new Date(b.date) - new Date(a.date);
+    });
+    setEvents(sortedByDate);
+  }
+
+  const sortByCategory = () => {
+    toggelSortOrder();
+    setSortBy("name");
+    const sortedByCategory = [...events].sort((a, b) => {
+      const nameA = a.category.toLowerCase();
+      const nameB = b.category.toLowerCase();
+      return sortOrder === "asc" ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA)
+    });
+    setEvents(sortedByCategory);
+  }
+
   useEffect(() => {
     getAllEvents();
   }, []);
 
   return (
-    <section className="text-gray-600 body-font overflow-hidden my-24 border border-solid border-red outline-current:black">
-      <div className="container relative  px-5 py-24 mt-10 mx-auto">
-        {/*  */}
-        <h1 className="title-font sm:text-4xl text-3xl mb-4 fonr-medium text-gray-900">Events happening next</h1>
+    <section className="">
+      <h1 className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-600 bg-clip-text text-2xl font-extrabold text-transparent sm:text-5xl p-5">Events happening next</h1>
+      
+      {/* FILTERS */}
 
+      <div>
+        <SortButton sortValue={sortByCategory} text="Sort By Category"/>
+        <SortButton sortValue={sortByDate} text="Sort By Date"/>
+    
+      {/* <button onClick={() => {sortByDate()}} className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Sort By Date
+          <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      <button onClick={() => {sortByName()}} className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Sort By Name
+          <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button> */}
+      </div>
+
+      
+      
+
+        {/* EVENTS */}
+        
+        <div>
         {events.map((event) => {
           return (
-            <div key={event.id} className="-my-8 divide-y-2 divide-gray-100">
+            <div key={event.id} className="-my-8 divide-y-2 divide-gray-100 container relative  px-5 0 mt-10 mx-auto text-gray-600 body-font overflow-hidden bg-gradient-to-r from-white via-purple-100 to-white p-8 rounded-md">
               <div  className="py-8 flex flex-wrap md:flex-nowrap">
                 <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                  <span className="font-semibold title-font text-gray-700">
-                    CATEGORY
+                  <span className="font-semibold title-font text-gray-700 uppercase">
+                    {event.category}
                   </span>
                   <span className="mt-1 text-gray-500 text-sm">
                     {event.date}
@@ -67,11 +137,14 @@ function EventsSection() {
                  
                 </div>
               </div>
+              <hr />
               {/* Repeat the above structure for each article */}
             </div>
           );
         })}
-      </div>
+        </div>
+       
+      
     </section>
   );
 }
