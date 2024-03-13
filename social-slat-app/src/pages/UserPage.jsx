@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -37,7 +39,9 @@ export default function UserPage() {
                 <ul className="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
                     {users.map((user) => {
                         return(
+                            
                         <li className="pb-3 sm:pb-4" key={user.id}>
+                            <Link to={`/users/${user.id}`}>
                             <div className="flex items-center space-x-4 rtl:space-x-reverse">
                                 <div className="flex-shrink-0">
                                     <img className="w-16 h-16 rounded-full" src={user.image} alt="Neil image" />
@@ -51,6 +55,9 @@ export default function UserPage() {
                                     </p>
                                 </div>
                             </div>
+
+                            </Link>
+                            
                         </li>
                         )
                     } )}

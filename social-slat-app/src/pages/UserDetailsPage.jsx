@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
 
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -55,26 +56,31 @@ console.log(`${API_URL}/users/${userId}`)
             </div>
             <hr className="mt-6" />
             <div className="flex  bg-gray-50 ">
-                <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
+                <div className="text-center w-1/2 p-4 ">
                     <p><span className="font-semibold">Events Created </span></p>
                     <ul>
                         {userDetails.events.created.map((event, i) => {
                             return (
                                 <li key={i}>
-                                    <p>{event}</p>
+                                    <Link to={`/events/${event.eventId}`}>                                   
+                                        <p className="hover:bg-gray-100 cursor-pointer">{event.eventTitle}</p>
+                                    </Link>
                                 </li>
                             )
                         })}
                     </ul>
                 </div>
                 <div className="border"></div>
-                <div className="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
+                <div className="text-center w-1/2 p-4 ">
                     <p> <span className="font-semibold">Events Attending </span></p>
                     <ul>
                         {userDetails.events.attending.map((event, i) => {
                             return (
                                 <li key={i}>
-                                    <p>{event}</p>
+                                    <Link to={`/events/${event.eventId}`}>
+
+                                    <p className=" hover:bg-gray-100 cursor-pointer">{event.eventTitle}</p>
+                                    </Link>
                                 </li>
                             )
                         })}
