@@ -6,6 +6,8 @@ import HomePage from './pages/HomePage'
 import {Route, Routes} from 'react-router-dom'
 import UserPage from './pages/UserPage';
 import UserDetails from './pages/UserDetailsPage';
+import About from './pages/About';
+
 
 
 
@@ -21,6 +23,8 @@ function App() {
         <Route path="/events/:eventId" element={<EventDetails />} />
         <Route path="/users" element={<UserPage />} />
         <Route path="/users/:userId" element={<UserDetails />} />
+        <Route path="/about" element={<About />} />
+
       </Routes>
       
       <Footer />
