@@ -21,7 +21,9 @@ function Header() {
         <NavLink to="/users">
           <a className="mr-5 hover:text-gray-900">Users</a>
         </NavLink>
+        <NavLink to="/calendar">
           <a className="mr-5 hover:text-gray-900">Calendar</a>
+        </NavLink>
         <NavLink to="/about" >
           <a className="mr-5 hover:text-gray-900">About</a>
         </NavLink>
