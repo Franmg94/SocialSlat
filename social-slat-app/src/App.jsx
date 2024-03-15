@@ -7,7 +7,8 @@ import {Route, Routes} from 'react-router-dom'
 import UserPage from './pages/UserPage';
 import UserDetails from './pages/UserDetailsPage';
 import About from './pages/About';
-import Calendar from './pages/Calendar';
+import CalendarPage from './pages/CalendarPage';
+
 
 
 
@@ -27,7 +28,7 @@ function App() {
         <Route path="/users" element={<UserPage />} />
         <Route path="/users/:userId" element={<UserDetails />} />
         <Route path="/about" element={<About />} />
-        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/calendar" element={<CalendarPage />} />
 
       </Routes>
       
