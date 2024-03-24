@@ -70,14 +70,18 @@ function EventsSection() {
   }, []);
 
   return (
-    <section className="">
-      <h1 className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-600 bg-clip-text text-2xl font-extrabold text-transparent sm:text-5xl p-5">
+    <section id="eventsSection" className=""  >
+
+      {/* FILTERS  SECTION */}
+      <div className="bg-slate-100 p-10 text-center">
+
+      <h1  className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-600 bg-clip-text text-2xl font-extrabold text-transparent sm:text-5xl p-5">
         Events happening next
       </h1>
 
       {/* FILTERS */}
 
-      <div>
+      <div className="flex justify-between">
         <SortButton sortValue={sortByCategory} text="Sort By Category" />
         <SortButton sortValue={sortByDate} text="Sort By Date" />
         <label>
@@ -89,19 +93,23 @@ function EventsSection() {
           />
         </label>
       </div>
+      </div>
+     
+
+      
 
       {/* EVENTS */}
 
-      <div>
+      <div className="flex flex-wrap justify-center items-start gap-6" >
         {filteredEvents.map((event) => {
           return (
             <div
               key={event.id}
-              className="-my-8 divide-y-2 divide-gray-100 container relative  px-5 0 mt-10 mx-auto text-gray-600 body-font overflow-hidden bg-gradient-to-r from-white via-purple-100 to-white p-8 rounded-md"
+              className="-my-8 divide-y-2 divide-gray-100 container relative  px-5 0 mt-10  text-gray-600 body-font overflow-hidden bg-gradient-to-r from-white via-purple-00 to-white p-8 rounded-md max-w-lg "
             >
               <div className="py-8 flex flex-wrap md:flex-nowrap">
                 <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                  <span className="font-semibold title-font text-gray-700 uppercase">
+                  <span className="font-semibold title-font text-slate-600 uppercase">
                     {event.category}
                   </span>
                   <span className="mt-1 text-gray-500 text-sm">
@@ -109,12 +117,16 @@ function EventsSection() {
                   </span>
                 </div>
                 <div className="md:flex-grow">
-                  <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
+                  <h2 className="bg-gradient-to-r from-green-400 via-blue-400 to-purple-600 bg-clip-text text-2xl font-extrabold text-transparent sm:text-2xl">
                     {event.title}
                   </h2>
-                  <p className="leading-relaxed">{event.description}</p>
-                  <Link to={`/events/${event.id}`}>
-                    <a className="text-pink-500 inline-flex items-center mt-4">
+                  <p className="leading-relaxed mt-5">{event.description}</p>
+                 
+                </div>
+                
+              </div>
+               <Link to={`/events/${event.id}`}>
+                    <a className="text-pink-500 hover:bg-pink-300 rounded hover:px-2 hover:text-white inline-flex items-center mt-4">
                       Learn More
                       <svg
                         className="w-4 h-4 ml-2"
@@ -129,15 +141,12 @@ function EventsSection() {
                         <path d="M12 5l7 7-7 7"></path>
                       </svg>
                     </a>
-                  </Link>
-                </div>
-              </div>
-              <hr />
-              {/* Repeat the above structure for each article */}
+                  </Link>              
             </div>
           );
         })}
       </div>
+     
     </section>
   );
 }
