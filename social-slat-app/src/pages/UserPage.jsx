@@ -117,7 +117,10 @@ export default function UserPage() {
           </div> */}
 
           {/*USERS LIST */}
-          <div className="m-10 container">
+          
+          <div className="m-10 my-40 container">
+            <h1 className="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl -mt-40 text-center mb-10"> Users </h1>
+            <hr className="mb-6"/>
             <ul className=" divide-y divide-gray-200 dark:divide-gray-700">
               {users.map((user) => {
                 return (
