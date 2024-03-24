@@ -118,7 +118,7 @@ export default function UserPage() {
 
           {/*USERS LIST */}
           <div className="m-10 container">
-            <ul className="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
+            <ul className=" divide-y divide-gray-200 dark:divide-gray-700">
               {users.map((user) => {
                 return (
                   <li
@@ -129,22 +129,25 @@ export default function UserPage() {
                  {/*SELECTED USER */}
                     {selectUser === user ? (
 
-                      <div className="flex items-center gap-2 space-x-4 rtl:space-x-reverse bg-lime-100 rounded p-5">
+                     <div className="   dark:bg-gray-800   flex flex-wrap items-center  justify-center p-5">
+                      <div className="flex items-center gap-2 space-x-4 rtl:space-x-reverse bg-lime-100 rounded p-5 ">
                         <div className="flex-shrink-0">
                           <img
-                            className="w-20 h-20 rounded-full"
+                            className="w-24 h-24 rounded-full"
                             src={user.image}
                             alt="Neil image"
                           />
                         </div>
-                        <div className="flex-1 min-w-0">
+                        <div className=" min-w-0">
                           <span className="text-lg font-medium text-gray-900 truncate dark:text-white">
                             {user.username}
                           </span>
+                          <br />
                           <span className="text-sm text-gray-500 truncate dark:text-gray-400">
                             {user.squad}
                           </span>
                         </div>
+                        <p>{user.about}</p>
                         <hr />
 
                 {/*EVENTS FROM USER */}
@@ -153,6 +156,7 @@ export default function UserPage() {
                             <span className="font-semibold">
                               Events Created
                             </span>
+                            <hr />
                             <ul>
                               {user.events.created.map((event, i) => {
                                 return (
@@ -170,6 +174,7 @@ export default function UserPage() {
                           <div className="border"></div>
                           <div className="text-center w-1/2 p-4">
                             <span className="font-semibold">Events Attending</span>
+                            <hr />
                             <ul>
                                 {user.events.attending.map((event, i) => {
                                     return (
@@ -185,6 +190,8 @@ export default function UserPage() {
                           </div>
                         </div>
                       </div>
+
+                     </div>
                     ) : (
                       /*NON SELECTED USER */
                       <div className="flex items-center space-x-4 rtl:space-x-reverse">
