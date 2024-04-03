@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import UserDetails from "./UserDetailsPage";
+
 
 const API_URL = import.meta.env.VITE_API_URL;
 
