@@ -62,7 +62,7 @@ function EventsSection() {
     /* FILTER BY TITLE  */
   }
   const filteredEvents = events.filter((event) => {
-    return event.title.toLowerCase().includes(query.toLowerCase());
+    return event.title && event.title.toLowerCase().includes(query.toLowerCase());
   });
 
   useEffect(() => {
